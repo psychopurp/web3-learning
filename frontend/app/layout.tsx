@@ -3,10 +3,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "simplebar-react/dist/simplebar.min.css";
 import "@rainbow-me/rainbowkit/styles.css";
-
-import { RainbowKitProvider } from "@rainbow-me/rainbowkit";
-import { WagmiConfig } from "wagmi";
-import { wagmiConfig, chains } from "@/lib/wagmi";
+import { Providers } from "@/app/providers";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -23,9 +20,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <WagmiConfig config={wagmiConfig}>
-          <RainbowKitProvider chains={chains}>{children}</RainbowKitProvider>
-        </WagmiConfig>
+        <Providers>{children}</Providers>
       </body>
     </html>
   );

@@ -1,3 +1,7 @@
+"use client";
+import { usePathname } from "next/navigation";
+
 export default function Index() {
-  return <div>wallet</div>;
+  const pathname = usePathname();
+  return <div>{pathname + "now"}</div>;
 }

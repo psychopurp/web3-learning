@@ -4,6 +4,7 @@
         "description": "使用 ethers.js 连接 Metamask，实现了连接、断开、查询余额、刷新余额、转账等加密钱包的极简功能。麻雀虽小，五脏俱全。适合初学者学习。",
         "url": "/example/simple-wallet",
         "icon": "TbWallet",
+        "useWallet":true,
         "technologyStack": [
             "next.js",
             "react",
@@ -17,6 +18,7 @@
         "description": "使用 ethers.js 批量生成随机的钱包地址，支持 Excel 导出。适合初学者学习。",
         "url": "/example/wallet-generator",
         "icon": "GiPerspectiveDiceSixFacesRandom",
+        "useWallet":false,
         "technologyStack": [
             "next.js",
             "react",
@@ -31,6 +33,7 @@
         "description": "使用 ethers.js 实现的钱包靓号生成器。适合初学者学习。",
         "url": "/example/wallet-genuine-number-generator",
         "icon": "BiCool",
+        "useWallet":false,
         "technologyStack": [
             "next.js",
             "react",
@@ -44,6 +47,7 @@
         "description": "基于 ERC20 协议实现的 Noah 代币。实现了 ERC20 的所有功能。包含了代币的发行、转账、查询余额、查询总量、授权、授权转账等功能。适合全栈开发者学习。",
         "url": "/example/noah-token",
         "icon": "GiToken",
+        "useWallet":false,
         "technologyStack": [
             "next.js",
             "react",
@@ -60,6 +64,7 @@
         "description": "用于领取 Noah 代币的水龙头，实现了简单的代币领取功能。这个版本的实现需要用户连接钱包，并由用户支付 gas 才可以领取。适合全栈开发者学习。",
         "url": "/example/faucet",
         "icon": "FaFaucet",
+        "useWallet":false,
         "technologyStack": [
             "next.js",
             "react",
@@ -76,6 +81,7 @@
         "description": "用于领取 Noah 代币的水龙头，实现了简单的代币领取功能。这个版本的实现不需要用户连接钱包，由后端账户支付负责 gas 费。适合全栈开发者学习。",
         "url": "/example/faucet-with-backend",
         "icon": "FaFaucet",
+        "useWallet":false,
         "technologyStack": [
             "next.js",
             "react",
@@ -95,6 +101,7 @@
         "description": "用于空投场景的批量转账。支持一（地址）对一（数量）和多（地址）对一（数量），适合全栈开发者学习。",
         "url": "/example/airdrop",
         "icon": "FaTelegramPlane",
+        "useWallet":false,
         "technologyStack": [
             "next.js",
             "react",
@@ -111,6 +118,7 @@
         "description": "基于 ERC721 开发的 NFT DApp，涵盖了铸造 NFT、授权/收回 NFT 代理权、转让 NFT、销毁 NFT、授权/收回铸币权等功能。适合全栈开发者学习。",
         "url": "/example/noah-nft",
         "icon": "GiCardJackHearts",
+        "useWallet":false,
         "technologyStack": [
             "next.js",
             "react",

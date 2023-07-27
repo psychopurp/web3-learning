@@ -1,4 +1,3 @@
-"use client";
 import { alchemyProvider } from "wagmi/providers/alchemy";
 import { publicProvider } from "wagmi/providers/public";
 import { Chain, configureChains, createConfig, WagmiConfig } from "wagmi";

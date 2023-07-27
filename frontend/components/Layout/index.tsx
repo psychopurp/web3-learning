@@ -1,6 +1,6 @@
 "use client";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
+import { usePathname } from "next/navigation";
 import examples from "@/examples.json";
 import { Icon } from "@/components/Icon";
 import { Profile } from "@/components/Profile";
@@ -10,13 +10,18 @@ import { VscGithubAlt } from "react-icons/vsc";
 import { ReactNode, useEffect, useLayoutEffect, useState } from "react";
 import gradient from "random-gradient";
 
-function Layout({ children }: { children: ReactNode; useWallet?: boolean }) {
-  const router = useRouter();
+function Layout({ children }: { children: ReactNode }) {
+  const pathname = usePathname();
   const [menuVisible, setMenuVisible] = useState<boolean | null>(null); // 只有移动端才会用到
+
+  const [useWalletSet, setUseWalletSet] = useState<Set<string>>(() => {
+    const filtered = examples.filter((item) => item.useWallet);
+    return new Set(filtered.map((item) => item.url));
+  });
 
   useEffect(() => {
     setMenuVisible(null);
-  }, [router]);
+  }, [pathname]);
 
   useLayoutEffect(() => {
     new Vivus("menu-icon", {
@@ -47,11 +52,11 @@ function Layout({ children }: { children: ReactNode; useWallet?: boolean }) {
           {examples.map(({ name, description, url, technologyStack, icon }) => (
             <Link key={name} href={url}>
               <li
-                className={`p-3 rounded-md cursor-pointer hover:bg-gray-100 hover:text-black flex items-center gap-2 ${
-                  router.route === url
+                className={`p-2 rounded-md hover:bg-gray-100 hover:text-black flex items-center gap-2 ${
+                  pathname === url
                     ? "bg-gray-200 font-medium shadow-md"
                     : "text-gray-500"
-                } `}
+                }`}
                 onMouseEnter={() => {
                   new Vivus(icon, {
                     duration: 80,
@@ -65,22 +70,23 @@ function Layout({ children }: { children: ReactNode; useWallet?: boolean }) {
                 }}
               >
                 <Icon
-                  name={icon}
+                  id={icon}
                   size={24}
                   min={24}
-                  id={icon}
-                  color={router.route === url ? "black" : "inherit"}
+                  name={icon}
+                  color={pathname === url ? "black" : "inherit"}
                 />
                 <span className="flex-1">{name}</span>
               </li>
             </Link>
           ))}
         </ul>
+
         <Link
-          href="https://github.com/luzhenqian/web3-examples"
+          href="https://github.com/psychopurp/web3-learning"
           target={"_blank"}
         >
-          <div className="relative hidden p-4 text-white transition duration-500 ease-in-out rounded-md cursor-pointer md:block">
+          <div className="relative hidden p-4 text-black transition duration-500 ease-in-out rounded-md md:block">
             <div className="relative z-10 flex items-center justify-between">
               <VscGithubAlt size={24} />
               <span>Github</span>
@@ -89,13 +95,14 @@ function Layout({ children }: { children: ReactNode; useWallet?: boolean }) {
               style={{
                 background: bgGradient,
               }}
-              className="absolute top-0 bottom-0 left-0 right-0 rounded-md -z-1"
+              className="absolute inset-0 rounded-md"
             ></div>
           </div>
         </Link>
       </nav>
+
       <div className="flex-1 min-h-full max-h-full bg-gray-100 shadow-lg md:rounded-l-[4rem] overflow-auto">
-        <header className="flex justify-between items-center p-4 border-b bg-slate-50 md:rounded-tl-[4rem] sticky top-0 z-20">
+        <header className="flex justify-between items-center p-4 border-b bg-slate-50 md:rounded-tl-[4rem] sticky top-0 z-20  ">
           <div className="md:invisible">
             {menuVisible === true ? (
               <HiOutlineX
@@ -111,8 +118,8 @@ function Layout({ children }: { children: ReactNode; useWallet?: boolean }) {
               ></HiOutlineMenu>
             )}
           </div>
+          {useWalletSet.has(pathname) ? <Profile /> : <div />}
         </header>
-
         <div className="flex-1 p-4 ">{children}</div>
       </div>
     </div>

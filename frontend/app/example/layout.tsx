@@ -8,7 +8,6 @@ export default function PageLayout({
   return (
     <div>
       <Layout>{children}</Layout>
-      <div>layout</div>
     </div>
   );
 }

@@ -1,20 +1,9 @@
-import Image from "next/image";
-import Link from "next/link";
 import examples from "@/examples.json";
-import { SimpleBar } from "@/app/SimpleBar";
+import { SimpleBar, Link } from "@/app/client_package";
 
 export default function Home() {
   return (
     <main className="h-screen flex justify-center items-center w-screen bg-[#e0e2e7] p-2 md:p-20">
-      <div className="hidden md:fixed top-8 right-8 md:block">
-        <Link
-          href={"https://github.com/luzhenqian/web3-examples"}
-          target="_blank"
-        >
-          <GitHubIcon />
-        </Link>
-      </div>
-
       <SimpleBar className="w-full h-full rounded-lg md:rounded-3xl">
         <div
           className="flex flex-col w-full h-full gap-4 p-4 overflow-auto rounded-lg shadow-sm md:gap-8 md:p-8 md:shadow-inner md:rounded-3xl md:bg-[rgba(0,0,0,0.4)]
@@ -32,7 +21,11 @@ export default function Home() {
               text-[#24292f] md:text-white border-gray-300 border md:border-0"
                 >
                   <div className="flex justify-between">
-                    <Link className="text-2xl" href={url}>
+                    <Link
+                      className="text-2xl"
+                      _hover={{ color: "blue.500" }}
+                      href={url}
+                    >
                       {name}
                     </Link>
                   </div>
