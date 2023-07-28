@@ -1,5 +1,6 @@
 import examples from "@/examples.json";
-import { SimpleBar, Link } from "@/app/client_package";
+import { SimpleBar } from "@/app/client_package";
+import Link from "next/link";
 
 export default function Home() {
   return (
@@ -21,11 +22,7 @@ export default function Home() {
               text-[#24292f] md:text-white border-gray-300 border md:border-0"
                 >
                   <div className="flex justify-between">
-                    <Link
-                      className="text-2xl"
-                      _hover={{ color: "blue.500" }}
-                      href={url}
-                    >
+                    <Link className="text-2xl hover:text-blue-400" href={url}>
                       {name}
                     </Link>
                   </div>

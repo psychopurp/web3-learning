@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "next dev -p 8080 ",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
@@ -13,6 +13,7 @@
     "@chakra-ui/react": "^2.8.0",
     "@emotion/react": "^11.11.1",
     "@emotion/styled": "^11.11.0",
+    "@headlessui/react": "^1.7.16",
     "@rainbow-me/rainbowkit": "^1.0.7",
     "@types/node": "20.4.2",
     "@types/react": "18.2.15",
@@ -22,6 +23,7 @@
     "encoding": "^0.1.13",
     "eslint": "8.45.0",
     "eslint-config-next": "13.4.10",
+    "ethers": "^6.6.5",
     "framer-motion": "^10.13.1",
     "lokijs": "^1.5.12",
     "next": "13.4.10",
@@ -30,6 +32,7 @@
     "random-gradient": "^0.0.2",
     "react": "18.2.0",
     "react-dom": "18.2.0",
+    "react-jazzicon": "^1.0.4",
     "simplebar-react": "^3.2.4",
     "typescript": "5.1.6",
     "utf-8-validate": "^5.0.2",
