@@ -1,5 +1,4 @@
 "use client";
-import { usePathname } from "next/navigation";
 import {
   Fragment,
   createContext,
@@ -8,7 +7,7 @@ import {
   useEffect,
   useState,
 } from "react";
-import { ethers, Provider } from "ethers";
+import { ethers } from "ethers";
 import { Dialog, Transition } from "@headlessui/react";
 import dynamic from "next/dynamic";
 import Jazzicon from "react-jazzicon";
@@ -341,6 +340,6 @@ function Loading({ size = "md" }: { size?: "sm" | "md" | "lg" | "xl" }) {
 
 const Page = dynamic(() => Promise.resolve(PageWithNoSSR), { ssr: false });
 
-export default function index() {
+export default function Index() {
   return <Page></Page>;
 }

@@ -120,7 +120,7 @@ function Layout({ children }: { children: ReactNode }) {
           </div>
           {useWalletSet.has(pathname) ? <Profile /> : <div />}
         </header>
-        <div className="flex-1 p-4 ">{children}</div>
+        <div className="flex-1 p-4">{children}</div>
       </div>
     </div>
   );

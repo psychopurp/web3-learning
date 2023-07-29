@@ -10,9 +10,9 @@ export function Providers({ children }: { children: React.ReactNode }) {
   return (
     <WagmiConfig config={wagmiConfig}>
       <RainbowKitProvider chains={chains}>
-        <CacheProvider>
-          <ChakraProvider>{children}</ChakraProvider>
-        </CacheProvider>
+        {/* <CacheProvider> */}
+        <ChakraProvider>{children}</ChakraProvider>
+        {/* </CacheProvider> */}
       </RainbowKitProvider>
     </WagmiConfig>
   );
