@@ -1,7 +1,7 @@
 [
     {
-        "name": "简单钱包",
-        "description": "使用 ethers.js 连接 Metamask，实现了连接、断开、查询余额、刷新余额、转账等加密钱包的极简功能。麻雀虽小，五脏俱全。适合初学者学习。",
+        "name": "Simple Wallet",
+        "description": "Using ethers.js to connect to Metamask, we have achieved a minimalist set of functions for interacting with encrypted wallets, including connecting, disconnecting, querying balance, refreshing balance, and transferring funds. Though small, it includes everything you need. It is suitable for beginners to learn.",
         "url": "/example/simple-wallet",
         "icon": "TbWallet",
         "useWallet":false,
@@ -14,8 +14,8 @@
         ]
     },
     {
-        "name": "钱包地址生成器",
-        "description": "使用 ethers.js 批量生成随机的钱包地址，支持 Excel 导出。适合初学者学习。",
+        "name": "Wallet Address Generator",
+        "description": "Using ethers.js to generate a batch of random wallet addresses, with support for exporting to Excel. It is suitable for beginners to learn.",
         "url": "/example/wallet-generator",
         "icon": "GiPerspectiveDiceSixFacesRandom",
         "useWallet":false,
@@ -29,8 +29,8 @@
         ]
     },
     {
-        "name": "钱包靓号生成器",
-        "description": "使用 ethers.js 实现的钱包靓号生成器。适合初学者学习。",
+        "name": "Vanity Wallet Address Generator",
+        "description": "Using ethers.js to implement a wallet vanity address generator. It is suitable for beginners to learn.",
         "url": "/example/wallet-genuine-number-generator",
         "icon": "BiCool",
         "useWallet":false,
@@ -43,8 +43,8 @@
         ]
     },
     {
-        "name": "Noah 代币",
-        "description": "基于 ERC20 协议实现的 Noah 代币。实现了 ERC20 的所有功能。包含了代币的发行、转账、查询余额、查询总量、授权、授权转账等功能。适合全栈开发者学习。",
+        "name": "Noah Token",
+        "description": "Noah token is implemented based on the ERC20 protocol, and includes all functions specified in the ERC20 standard, such as token issuance, transfer, balance inquiry, total supply inquiry, authorization, and authorized transfer. It is suitable for full-stack developers to learn.",
         "url": "/example/noah-token",
         "icon": "GiToken",
         "useWallet":false,
@@ -60,8 +60,8 @@
         ]
     },
     {
-        "name": "Noah 代币水龙头（纯智能合约版本）",
-        "description": "用于领取 Noah 代币的水龙头，实现了简单的代币领取功能。这个版本的实现需要用户连接钱包，并由用户支付 gas 才可以领取。适合全栈开发者学习。",
+        "name": "Noah token faucet (pure smart contract version)",
+        "description": "This is a Noah token faucet used for users to claim Noah tokens. It implements a simple function for token claiming. This version requires users to connect their wallets and pay for gas fees in order to claim tokens. It is suitable for full-stack developers to learn.",
         "url": "/example/faucet",
         "icon": "FaFaucet",
         "useWallet":false,
@@ -77,8 +77,8 @@
         ]
     },
     {
-        "name": "Noah 代币水龙头（后端配合智能合约版本）",
-        "description": "用于领取 Noah 代币的水龙头，实现了简单的代币领取功能。这个版本的实现不需要用户连接钱包，由后端账户支付负责 gas 费。适合全栈开发者学习。",
+        "name": "Noah token faucet (backend with smart contract version)",
+        "description": "This is a Noah token faucet used for users to claim Noah tokens. It implements a simple function for token claiming. This version does not require users to connect their wallets, and the gas fees are paid for by a backend account. It is suitable for full-stack developers to learn.",
         "url": "/example/faucet-with-backend",
         "icon": "FaFaucet",
         "useWallet":false,
@@ -97,8 +97,8 @@
         ]
     },
     {
-        "name": "Noah 代币空投批量转账（仅合约拥有者可操作版本）",
-        "description": "用于空投场景的批量转账。支持一（地址）对一（数量）和多（地址）对一（数量），适合全栈开发者学习。",
+        "name": "Noah token airdrop batch transfer (version for contract owner only)",
+        "description": "This is a batch transfer application designed for airdrop scenarios. It supports both one-to-one (address to amount) and many-to-one (multiple addresses to one amount) transfers. It is suitable for full-stack developers to learn.",
         "url": "/example/airdrop",
         "icon": "FaTelegramPlane",
         "useWallet":false,
@@ -115,7 +115,7 @@
     },
     {
         "name": "Noah NFT",
-        "description": "基于 ERC721 开发的 NFT DApp，涵盖了铸造 NFT、授权/收回 NFT 代理权、转让 NFT、销毁 NFT、授权/收回铸币权等功能。适合全栈开发者学习。",
+        "description": "This is an NFT (non-fungible token) DApp developed based on the ERC721 standard. It includes functions such as minting NFTs, authorizing/retracting NFT proxy approval, transferring NFTs, burning NFTs, and authorizing/retracting the right to mint tokens. It is suitable for full-stack developers to learn.",
         "url": "/example/noah-nft",
         "icon": "GiCardJackHearts",
         "useWallet":false,

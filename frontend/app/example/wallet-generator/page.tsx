@@ -65,7 +65,7 @@ export default function Page() {
 
   return (
     <div className="flex flex-col gap-2 p-4">
-      <Heading>Wallet address generator</Heading>
+      <Heading>Wallet Address Generator</Heading>
       <Heading size={"sm"}>generate quantity</Heading>
       <Alert>
         Generate a maximum of 100 wallet addresses at a time, if too many will
@@ -88,7 +88,7 @@ export default function Page() {
         disabled={isLoading}
         isLoading={isLoading}
       >
-        start generating
+        Start to generate
       </Button>
 
       {wallets.length > 0 && <Button onClick={exports}>Batch export</Button>}

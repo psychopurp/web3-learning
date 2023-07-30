@@ -11,7 +11,7 @@ export default function Home() {
             md:backdrop-blur-[4px]"
         >
           <div className="w-full text-3xl font-bold md:text-white">
-            Web3 代码示例
+            Web3 Code Examples
           </div>
           <div className="grid grid-cols-1 gap-4 md:grid-cols-4">
             {examples.map(({ name, description, url, technologyStack }) => {
@@ -31,7 +31,7 @@ export default function Home() {
                     {description}
                   </div>
 
-                  <div className="text-sm font-bold">技术栈</div>
+                  <div className="text-sm font-bold">Tech stack</div>
                   <ul>
                     {technologyStack.map((tech) => (
                       <li key={tech}>{tech}</li>
