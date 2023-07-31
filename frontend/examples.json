@@ -47,7 +47,7 @@
         "description": "Noah token is implemented based on the ERC20 protocol, and includes all functions specified in the ERC20 standard, such as token issuance, transfer, balance inquiry, total supply inquiry, authorization, and authorized transfer. It is suitable for full-stack developers to learn.",
         "url": "/example/noah-token",
         "icon": "GiToken",
-        "useWallet":false,
+        "useWallet":true,
         "technologyStack": [
             "next.js",
             "react",
