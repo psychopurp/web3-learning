@@ -11,6 +11,7 @@ import { ethers } from "ethers";
 import { Dialog, Transition } from "@headlessui/react";
 import dynamic from "next/dynamic";
 import Jazzicon from "react-jazzicon";
+import { Button, Card, CardBody, Input } from "@nextui-org/react";
 
 type IWalletCtx = {
   walletProvider: ethers.BrowserProvider;
@@ -189,9 +190,9 @@ function Connect() {
     return (
       <div className="flex justify-end p-4">
         {walletProvider ? (
-          <button className="btn" onClick={connectToMetamask}>
+          <Button color="primary" variant="shadow" onClick={connectToMetamask}>
             connect to metamask
-          </button>
+          </Button>
         ) : (
           <Loading />
         )}
@@ -211,9 +212,7 @@ function Connect() {
         </h1>
       </div>
 
-      <button className="btn" onClick={disconnect}>
-        disconnect
-      </button>
+      <Button onClick={disconnect}>disconnect</Button>
     </div>
   );
 }
@@ -224,17 +223,23 @@ function Details() {
     return null;
   }
   return (
-    <div className="flex flex-col w-full gap-4 p-4 text-white rounded-md bg-slate-800">
-      <div className="flex justify-between">
-        <div className="text-2xl font-thin">balance</div>
-        <div>network: {networkName}</div>
-      </div>
+    <Card
+      isBlurred
+      className="text-white rounded-md flex flex-col w-full bg-slate-800"
+      shadow="sm"
+    >
+      <CardBody>
+        <div className="flex justify-between">
+          <div className="text-2xl font-thin">balance</div>
+          <div>network: {networkName}</div>
+        </div>
 
-      <div className="flex items-end gap-2">
-        <div className="text-2xl">{balance.substring(0, 10)}</div>
-        <div>ETH</div>
-      </div>
-    </div>
+        <div className="flex items-end gap-2">
+          <div className="text-2xl">{balance.substring(0, 10)}</div>
+          <div>ETH</div>
+        </div>
+      </CardBody>
+    </Card>
   );
 }
 
@@ -284,23 +289,23 @@ function Transfer() {
         </div>
       ) : (
         <div className="flex flex-col gap-2">
-          <input
-            className="input"
+          <Input
+            variant="bordered"
             value={to}
             onInput={(e: any) => setTo(e.target.value)}
             type="text"
             placeholder="address"
           />
-          <input
-            className="input"
+          <Input
+            variant="bordered"
             value={amount}
             onInput={(e: any) => setAmount(e.target.value)}
             type="number"
             placeholder="amount"
           />
-          <button className="btn" onClick={transfer}>
+          <Button color="primary" variant="shadow" onClick={transfer}>
             send
-          </button>
+          </Button>
         </div>
       )}
     </div>

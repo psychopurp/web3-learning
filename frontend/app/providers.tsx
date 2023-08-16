@@ -1,18 +1,15 @@
 "use client";
 
-import { CacheProvider } from "@chakra-ui/next-js";
-import { ChakraProvider } from "@chakra-ui/react";
 import { RainbowKitProvider } from "@rainbow-me/rainbowkit";
 import { WagmiConfig } from "wagmi";
 import { wagmiConfig, chains } from "@/lib/wagmi";
+import { NextUIProvider } from "@nextui-org/react";
 
 export function Providers({ children }: { children: React.ReactNode }) {
   return (
     <WagmiConfig config={wagmiConfig}>
       <RainbowKitProvider chains={chains}>
-        {/* <CacheProvider> */}
-        <ChakraProvider>{children}</ChakraProvider>
-        {/* </CacheProvider> */}
+        <NextUIProvider>{children}</NextUIProvider>
       </RainbowKitProvider>
     </WagmiConfig>
   );

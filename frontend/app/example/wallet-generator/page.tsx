@@ -1,24 +1,16 @@
 "use client";
-import {
-  Accordion,
-  AccordionButton,
-  AccordionItem,
-  AccordionPanel,
-  Alert,
-  Button,
-  Heading,
-  Input,
-  useClipboard,
-} from "@chakra-ui/react";
+
 import { ethers } from "ethers";
 import { useState } from "react";
 import { utils, writeFile } from "xlsx";
+import { useCopyToClipboard } from "usehooks-ts";
+import { Accordion, AccordionItem, Input, Button } from "@nextui-org/react";
 
 export default function Page() {
   const [generateNum, setGenerateNum] = useState<number>(1);
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [wallets, setWallets] = useState<ethers.HDNodeWallet[]>([]);
-  const { onCopy, value, setValue, hasCopied } = useClipboard("");
+  const [value, copy] = useCopyToClipboard();
 
   const generate = () => {
     const _wallets: ethers.HDNodeWallet[] = [];
@@ -65,17 +57,16 @@ export default function Page() {
 
   return (
     <div className="flex flex-col gap-2 p-4">
-      <Heading>Wallet Address Generator</Heading>
-      <Heading size={"sm"}>generate quantity</Heading>
-      <Alert>
+      <div className="text-4xl font-bold">Wallet Address Generator</div>
+      <div className="font-bold">generate quantity</div>
+      <div className="rounded-lg bg-cyan-300 p-4">
         Generate a maximum of 100 wallet addresses at a time, if too many will
         cause the browser to jam.
-      </Alert>
+      </div>
       <Input
         type="number"
-        value={generateNum}
         max={100}
-        errorBorderColor="red.300"
+        variant="faded"
         onChange={(e) => {
           setGenerateNum(Number(e.target.value));
         }}
@@ -84,7 +75,8 @@ export default function Page() {
 
       <Button
         onClick={generate}
-        bgColor="blue.400"
+        color="primary"
+        variant="solid"
         disabled={isLoading}
         isLoading={isLoading}
       >
@@ -94,30 +86,33 @@ export default function Page() {
       {wallets.length > 0 && <Button onClick={exports}>Batch export</Button>}
 
       <div className="flex flex-col gap-2">
-        <Accordion allowToggle>
+        <Accordion>
           {wallets.map((wallet) => {
             return (
               <AccordionItem
                 key={wallet.privateKey}
                 className="flex flex-col gap-2"
+                title={<h1 className="text-lg font-bold">{wallet.address}</h1>}
               >
-                <AccordionButton>
+                {/* <AccordionButton>
                   <Heading size="md">{wallet.address}</Heading>
-                </AccordionButton>
+                </AccordionButton> */}
 
-                <AccordionPanel className="flex flex-col gap-2">
+                <div className="flex flex-col gap-2">
                   <div className="flex items-center gap-2">
                     <p className="w-20">Address</p>
-                    <Input className="flex-1" value={wallet.address} readOnly />
+                    <Input
+                      className="flex-1"
+                      variant="bordered"
+                      value={wallet.address}
+                      readOnly
+                    />
                     <Button
                       onClick={() => {
-                        setValue(wallet.address);
-                        onCopy();
+                        copy(wallet.address);
                       }}
                     >
-                      {hasCopied && value === wallet.address
-                        ? "copied"
-                        : "copy"}
+                      {value === wallet.address ? "copied" : "copy"}
                     </Button>
                   </div>
 
@@ -125,18 +120,16 @@ export default function Page() {
                     <p className="w-20">Public key</p>
                     <Input
                       className="flex-1"
+                      variant="bordered"
                       value={wallet.publicKey}
                       readOnly
                     />
                     <Button
                       onClick={() => {
-                        setValue(wallet.publicKey);
-                        onCopy();
+                        copy(wallet.publicKey);
                       }}
                     >
-                      {hasCopied && value === wallet.publicKey
-                        ? "copied"
-                        : "copy"}
+                      {value === wallet.publicKey ? "copied" : "copy"}
                     </Button>
                   </div>
 
@@ -144,18 +137,16 @@ export default function Page() {
                     <p className="w-20">Private key</p>
                     <Input
                       className="flex-1"
+                      variant="bordered"
                       value={wallet.privateKey}
                       readOnly
                     />
                     <Button
                       onClick={() => {
-                        setValue(wallet.privateKey);
-                        onCopy();
+                        copy(wallet.privateKey);
                       }}
                     >
-                      {hasCopied && value === wallet.privateKey
-                        ? "copied"
-                        : "copy"}
+                      {value === wallet.privateKey ? "copied" : "copy"}
                     </Button>
                   </div>
 
@@ -163,21 +154,19 @@ export default function Page() {
                     <p className="w-20">Mnemonic words</p>
                     <Input
                       className="flex-1"
+                      variant="bordered"
                       value={wallet.mnemonic?.phrase}
                       readOnly
                     />
                     <Button
                       onClick={() => {
-                        setValue(wallet.mnemonic?.phrase);
-                        onCopy();
+                        copy(wallet.mnemonic?.phrase);
                       }}
                     >
-                      {hasCopied && value === wallet.mnemonic?.phrase
-                        ? "copied"
-                        : "copy"}
+                      {value === wallet.mnemonic?.phrase ? "copied" : "copy"}
                     </Button>
                   </div>
-                </AccordionPanel>
+                </div>
               </AccordionItem>
             );
           })}
