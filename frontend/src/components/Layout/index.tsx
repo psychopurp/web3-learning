@@ -1,20 +1,18 @@
-"use client";
-import Link from "next/link";
-import { usePathname } from "next/navigation";
 import examples from "@/examples.json";
-import { Icon } from "@/components/Icon";
-import { Profile } from "@/components/Profile";
+import { Icon } from "@/src/components/Icon";
+import { Profile } from "@/src/components/Profile";
 import Vivus from "vivus";
 import { HiOutlineMenu, HiOutlineX } from "react-icons/hi";
 import { VscGithubAlt } from "react-icons/vsc";
-import { ReactNode, useEffect, useLayoutEffect, useState } from "react";
+import { useEffect, useLayoutEffect, useState } from "react";
 import gradient from "random-gradient";
+import { Link, Outlet, useLocation } from "react-router-dom";
 
-function Layout({ children }: { children: ReactNode }) {
-  const pathname = usePathname();
+function Layout() {
+  const { pathname: pathname } = useLocation();
   const [menuVisible, setMenuVisible] = useState<boolean | null>(null); // 只有移动端才会用到
 
-  const [useWalletSet, setUseWalletSet] = useState<Set<string>>(() => {
+  const [useWalletSet] = useState<Set<string>>(() => {
     const filtered = examples.filter((item) => item.useWallet);
     return new Set(filtered.map((item) => item.url));
   });
@@ -50,7 +48,7 @@ function Layout({ children }: { children: ReactNode }) {
       >
         <ul className="flex flex-col gap-2 py-2 md:gap-6">
           {examples.map(({ name, description, url, technologyStack, icon }) => (
-            <Link key={name} href={url}>
+            <Link key={name} to={url}>
               <li
                 className={`p-2 rounded-md hover:bg-gray-100 hover:text-black flex items-center gap-2 ${
                   pathname === url
@@ -114,13 +112,15 @@ function Layout({ children }: { children: ReactNode }) {
               <HiOutlineMenu
                 id="menu-icon"
                 size={32}
-                onClick={() => setMenuVisible(!!!menuVisible)}
+                onClick={() => setMenuVisible(!menuVisible)}
               ></HiOutlineMenu>
             )}
           </div>
           {useWalletSet.has(pathname) ? <Profile /> : <div />}
         </header>
-        <div className="flex-1 p-4">{children}</div>
+        <div className="flex-1 p-4">
+          <Outlet />
+        </div>
       </div>
     </div>
   );

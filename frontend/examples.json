@@ -2,7 +2,7 @@
     {
         "name": "Simple Wallet",
         "description": "Using ethers.js to connect to Metamask, we have achieved a minimalist set of functions for interacting with encrypted wallets, including connecting, disconnecting, querying balance, refreshing balance, and transferring funds. Though small, it includes everything you need. It is suitable for beginners to learn.",
-        "url": "/example/simple-wallet",
+        "url": "/examples/simple-wallet",
         "icon": "TbWallet",
         "useWallet":false,
         "technologyStack": [
@@ -16,7 +16,7 @@
     {
         "name": "Wallet Address Generator",
         "description": "Using ethers.js to generate a batch of random wallet addresses, with support for exporting to Excel. It is suitable for beginners to learn.",
-        "url": "/example/wallet-generator",
+        "url": "/examples/wallet-generator",
         "icon": "GiPerspectiveDiceSixFacesRandom",
         "useWallet":false,
         "technologyStack": [
@@ -31,7 +31,7 @@
     {
         "name": "Vanity Wallet Address Generator",
         "description": "Using ethers.js to implement a wallet vanity address generator. It is suitable for beginners to learn.",
-        "url": "/example/wallet-genuine-number-generator",
+        "url": "/examples/wallet-genuine-number-generator",
         "icon": "BiCool",
         "useWallet":false,
         "technologyStack": [
@@ -45,7 +45,7 @@
     {
         "name": "Noah Token",
         "description": "Noah token is implemented based on the ERC20 protocol, and includes all functions specified in the ERC20 standard, such as token issuance, transfer, balance inquiry, total supply inquiry, authorization, and authorized transfer. It is suitable for full-stack developers to learn.",
-        "url": "/example/noah-token",
+        "url": "/examples/noah-token",
         "icon": "GiToken",
         "useWallet":true,
         "technologyStack": [
@@ -62,7 +62,7 @@
     {
         "name": "Noah token faucet (pure smart contract version)",
         "description": "This is a Noah token faucet used for users to claim Noah tokens. It implements a simple function for token claiming. This version requires users to connect their wallets and pay for gas fees in order to claim tokens. It is suitable for full-stack developers to learn.",
-        "url": "/example/faucet",
+        "url": "/examples/faucet",
         "icon": "FaFaucet",
         "useWallet":false,
         "technologyStack": [
@@ -79,7 +79,7 @@
     {
         "name": "Noah token faucet (backend with smart contract version)",
         "description": "This is a Noah token faucet used for users to claim Noah tokens. It implements a simple function for token claiming. This version does not require users to connect their wallets, and the gas fees are paid for by a backend account. It is suitable for full-stack developers to learn.",
-        "url": "/example/faucet-with-backend",
+        "url": "/examples/faucet-with-backend",
         "icon": "FaFaucet",
         "useWallet":false,
         "technologyStack": [
@@ -99,7 +99,7 @@
     {
         "name": "Noah token airdrop batch transfer (version for contract owner only)",
         "description": "This is a batch transfer application designed for airdrop scenarios. It supports both one-to-one (address to amount) and many-to-one (multiple addresses to one amount) transfers. It is suitable for full-stack developers to learn.",
-        "url": "/example/airdrop",
+        "url": "/examples/airdrop",
         "icon": "FaTelegramPlane",
         "useWallet":false,
         "technologyStack": [
@@ -116,7 +116,7 @@
     {
         "name": "Noah NFT",
         "description": "This is an NFT (non-fungible token) DApp developed based on the ERC721 standard. It includes functions such as minting NFTs, authorizing/retracting NFT proxy approval, transferring NFTs, burning NFTs, and authorizing/retracting the right to mint tokens. It is suitable for full-stack developers to learn.",
-        "url": "/example/noah-nft",
+        "url": "/examples/noah-nft",
         "icon": "GiCardJackHearts",
         "useWallet":false,
         "technologyStack": [

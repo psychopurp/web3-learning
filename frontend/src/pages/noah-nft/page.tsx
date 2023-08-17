@@ -1,7 +1,7 @@
 "use client";
 import { usePathname } from "next/navigation";
 
-export default function Index() {
+export function Component() {
   const pathname = usePathname();
   return <div>{pathname}</div>;
 }

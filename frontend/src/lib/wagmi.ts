@@ -36,14 +36,14 @@ const { chains, publicClient } = configureChains(
   [mainnet, polygon, optimism, arbitrum, zora],
   [
     alchemyProvider({
-      apiKey: process.env.NEXT_PUBLIC_ALCHEMY_API_KEY as string,
+      apiKey:import.meta.env.VITE_ALCHEMY_API_KEY,
     }),
     publicProvider(),
   ]
 );
 const { connectors } = getDefaultWallets({
   appName: "Noah DApp",
-  projectId: process.env.NEXT_PUBLIC_PROJECT_ID as string,
+  projectId: import.meta.env.VITE_PROJECT_ID,
   chains,
 });
 const wagmiConfig = createConfig({

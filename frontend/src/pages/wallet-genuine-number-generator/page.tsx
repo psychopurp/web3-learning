@@ -2,75 +2,75 @@
 
 import { ethers } from "ethers";
 import { useState } from "react";
-import { utils, writeFile } from "xlsx";
 import { useCopyToClipboard } from "usehooks-ts";
 import { Accordion, AccordionItem, Input, Button } from "@nextui-org/react";
 
-export default function Page() {
-  const [generateNum, setGenerateNum] = useState<number>(1);
+export function Component() {
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [wallets, setWallets] = useState<ethers.HDNodeWallet[]>([]);
   const [value, copy] = useCopyToClipboard();
 
+  const [startChar, setStartChar] = useState<string>("");
+  const [includeChar, setIncludeChar] = useState<string>("");
+  const [endChar, setEndChar] = useState<string>("");
+
   const generate = () => {
-    const _wallets: ethers.HDNodeWallet[] = [];
+    let _wallet: ethers.HDNodeWallet | null = null;
     setIsLoading(true);
+    setWallets([]);
     setTimeout(() => {
-      for (let i = 0; i < generateNum; i++) {
+      const match = new RegExp(`^0x${startChar}.*${includeChar}.*${endChar}$`);
+
+      while (true) {
         const wallet = ethers.Wallet.createRandom();
-        _wallets.push(wallet);
+        if (match.test(wallet.address)) {
+          _wallet = wallet;
+          break;
+        }
       }
-      setWallets(_wallets);
+
+      setWallets([_wallet]);
       setIsLoading(false);
     }, 300);
   };
 
-  const exports = () => {
-    const book = utils.book_new();
-    const data = wallets.map((wallet) => {
-      return {
-        address: wallet.address,
-        publicKey: wallet.publicKey,
-        privateKey: wallet.privateKey,
-        phrase: wallet.mnemonic?.phrase,
-      };
-    });
-
-    const sheet = utils.json_to_sheet(data);
-    sheet["!cols"] = [
-      {
-        wch: 50,
-      },
-      {
-        wch: 140,
-      },
-      {
-        wch: 70,
-      },
-      {
-        wch: 80,
-      },
-    ];
-    utils.book_append_sheet(book, sheet);
-    writeFile(book, "addresses.xlsx");
-  };
-
   return (
     <div className="flex flex-col gap-2 p-4">
-      <div className="text-4xl font-bold">Wallet Address Generator</div>
-      <div className="font-bold">generate quantity</div>
+      <div className="text-4xl font-bold">Vanity Wallet Address Generator</div>
       <div className="rounded-lg bg-cyan-300 p-4">
-        Generate a maximum of 100 wallet addresses at a time, if too many will
-        cause the browser to jam.
+        The harsher the conditions, the slower the generation speed.
       </div>
+
+      <div className="font-bold">Enter the starting numbers</div>
       <Input
         type="number"
-        max={100}
-        variant="faded"
+        value={startChar}
         onChange={(e) => {
-          setGenerateNum(Number(e.target.value));
+          setStartChar(e.target.value);
         }}
-        placeholder="Please enter the generated quantity"
+        placeholder="Please enter the starting numbers"
+      />
+
+      <div className="font-bold">Enter the containing numbers</div>
+      <Input
+        type="number"
+        value={includeChar}
+        max={100}
+        onChange={(e) => {
+          setIncludeChar(e.target.value);
+        }}
+        placeholder="Please enter the containing numbers"
+      />
+
+      <div className="font-bold">Enter the ending numbers</div>
+      <Input
+        type="number"
+        value={endChar}
+        max={100}
+        onChange={(e) => {
+          setEndChar(e.target.value);
+        }}
+        placeholder="Please enter the ending numbers"
       />
 
       <Button
@@ -83,8 +83,6 @@ export default function Page() {
         Start to generate
       </Button>
 
-      {wallets.length > 0 && <Button onClick={exports}>Batch export</Button>}
-
       <div className="flex flex-col gap-2">
         <Accordion>
           {wallets.map((wallet) => {
@@ -94,10 +92,6 @@ export default function Page() {
                 className="flex flex-col gap-2"
                 title={<h1 className="text-lg font-bold">{wallet.address}</h1>}
               >
-                {/* <AccordionButton>
-                  <Heading size="md">{wallet.address}</Heading>
-                </AccordionButton> */}
-
                 <div className="flex flex-col gap-2">
                   <div className="flex items-center gap-2">
                     <p className="w-20">Address</p>

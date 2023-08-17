@@ -1,4 +1,3 @@
-"use client";
 import {
   Fragment,
   createContext,
@@ -9,9 +8,9 @@ import {
 } from "react";
 import { ethers } from "ethers";
 import { Dialog, Transition } from "@headlessui/react";
-import dynamic from "next/dynamic";
 import Jazzicon from "react-jazzicon";
 import { Button, Card, CardBody, Input } from "@nextui-org/react";
+import { useNavigation } from "react-router-dom";
 
 type IWalletCtx = {
   walletProvider: ethers.BrowserProvider;
@@ -33,7 +32,9 @@ type IWalletCtx = {
 
 const WalletCtx = createContext<IWalletCtx>({} as IWalletCtx);
 
-function PageWithNoSSR() {
+export function Component() {
+  const navigation = useNavigation();
+  console.log(navigation);
   const [walletProvider, setWalletProvider] = useState<ethers.BrowserProvider>(
     {} as ethers.BrowserProvider
   );
@@ -341,10 +342,4 @@ function Loading({ size = "md" }: { size?: "sm" | "md" | "lg" | "xl" }) {
       ></path>
     </svg>
   );
-}
-
-const Page = dynamic(() => Promise.resolve(PageWithNoSSR), { ssr: false });
-
-export default function Index() {
-  return <Page></Page>;
 }
