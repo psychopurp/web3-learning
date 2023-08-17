@@ -155,12 +155,12 @@ export function Component() {
                     <Input
                       className="flex-1"
                       variant="bordered"
-                      value={wallet.mnemonic?.phrase}
+                      value={wallet.mnemonic!.phrase}
                       readOnly
                     />
                     <Button
                       onClick={() => {
-                        copy(wallet.mnemonic?.phrase);
+                        copy(wallet.mnemonic!.phrase);
                       }}
                     >
                       {value === wallet.mnemonic?.phrase ? "copied" : "copy"}

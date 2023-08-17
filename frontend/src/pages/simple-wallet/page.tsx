@@ -179,7 +179,7 @@ function Connect() {
       setBalance(ethers.formatEther(balance));
     } catch (error) {
       console.log(error);
-      showMessage(error.message);
+      showMessage((error as { message: string }).message);
     }
   };
 
@@ -269,7 +269,7 @@ function Transfer() {
       showMessage("successfully transferred");
     } catch (error) {
       console.log(error);
-      showMessage(error.message);
+      showMessage((error as { message: string }).message);
     } finally {
       setTransferring(false);
       setRefresh(!refresh);
@@ -293,14 +293,14 @@ function Transfer() {
           <Input
             variant="bordered"
             value={to}
-            onInput={(e: any) => setTo(e.target.value)}
+            onValueChange={(v) => setTo(v)}
             type="text"
             placeholder="address"
           />
           <Input
             variant="bordered"
             value={amount}
-            onInput={(e: any) => setAmount(e.target.value)}
+            onValueChange={(v) => setAmount(v)}
             type="number"
             placeholder="amount"
           />

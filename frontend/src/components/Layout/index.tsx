@@ -47,7 +47,7 @@ function Layout() {
         }`}
       >
         <ul className="flex flex-col gap-2 py-2 md:gap-6">
-          {examples.map(({ name, description, url, technologyStack, icon }) => (
+          {examples.map(({ name, url, icon }) => (
             <Link key={name} to={url}>
               <li
                 className={`p-2 rounded-md hover:bg-gray-100 hover:text-black flex items-center gap-2 ${
@@ -81,7 +81,7 @@ function Layout() {
         </ul>
 
         <Link
-          href="https://github.com/psychopurp/web3-learning"
+          to="https://github.com/psychopurp/web3-learning"
           target={"_blank"}
         >
           <div className="relative hidden p-4 text-black transition duration-500 ease-in-out rounded-md md:block">
