@@ -1,15 +1,45 @@
-import { ethers } from "hardhat";
+import { artifacts, ethers } from "hardhat";
+import path from "path";
+import fs from "fs";
+import { Contract } from "hardhat/internal/hardhat-network/stack-traces/model";
 
 async function main() {
-  const NoahToken = await ethers.deployContract("NoahToken", [
-    "noah",
-    "NOAH",
-    "1024000000000000000000",
-  ]);
+  const [deployer] = await ethers.getSigners();
+  console.log("Deploying contracts with the account:", deployer.address);
 
-  await NoahToken.waitForDeployment();
+  const ContractFactory = await ethers.getContractFactory("NoahToken");
+  const contract = await ContractFactory.deploy(
+    "elo",
+    "ELO",
+    "1024000000000000000000"
+  );
 
-  console.log(`NoahToken deployed to ${NoahToken}`);
+  console.log("Contract address:", await contract.getAddress());
+
+  saveFrontendFiles("NoahToken", await contract.getAddress());
+}
+
+function saveFrontendFiles(contractName: string, address: string) {
+  const abiDir = path.join(__dirname, "..", "frontend", "abi");
+
+  if (!fs.existsSync(abiDir)) {
+    fs.mkdirSync(abiDir);
+  }
+
+  fs.writeFileSync(
+    path.join(abiDir, "contract-address.json"),
+    JSON.stringify({ Contract: address }, undefined, 2)
+  );
+
+  const Artifact = artifacts.readArtifactSync(contractName);
+
+  const abiTs = `export const ${contractName}ABI = ${JSON.stringify(
+    Artifact,
+    null,
+    2
+  )} as const`;
+
+  fs.writeFileSync(path.join(abiDir, `${contractName}ABI.ts`), abiTs);
 }
 
 // We recommend this pattern to be able to use async/await everywhere
