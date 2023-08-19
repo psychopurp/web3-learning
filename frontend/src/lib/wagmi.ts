@@ -1,42 +1,35 @@
 import { alchemyProvider } from "wagmi/providers/alchemy";
 import { publicProvider } from "wagmi/providers/public";
-import { Chain, configureChains, createConfig, WagmiConfig } from "wagmi";
-import {
-  mainnet,
-  polygon,
-  optimism,
-  arbitrum,
-  zora,
-  goerli,
-} from "wagmi/chains";
+import { Chain, configureChains, createConfig } from "wagmi";
+import { mainnet, polygon, optimism, arbitrum, zora } from "wagmi/chains";
 import { getDefaultWallets } from "@rainbow-me/rainbowkit";
 
 const localChain: Chain = {
-  id: 1337,
+  id: 31337,
   name: "Local",
   network: "Local",
   nativeCurrency: {
     name: "Noah",
-    symbol: "NOAH",
+    symbol: "ETH",
     decimals: 18,
   },
   rpcUrls: {
     default: {
-      http: ["http://127.0.0.1:7545"],
+      http: ["http://127.0.0.1:8545"],
       webSocket: undefined,
     },
     public: {
-      http: [],
+      http: ["http://127.0.0.1:8545"],
       webSocket: undefined,
     },
   },
 };
 
 const { chains, publicClient } = configureChains(
-  [mainnet, polygon, optimism, arbitrum, zora],
+  [mainnet, polygon, optimism, arbitrum, zora, localChain],
   [
     alchemyProvider({
-      apiKey:import.meta.env.VITE_ALCHEMY_API_KEY,
+      apiKey: import.meta.env.VITE_ALCHEMY_API_KEY,
     }),
     publicProvider(),
   ]

@@ -9,3 +9,13 @@
 # next.js
 **/.next/
 **/out/
+
+coverage
+coverage.json
+typechain
+typechain-types
+
+# Hardhat files
+cache
+artifacts
+

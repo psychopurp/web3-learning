@@ -10,7 +10,6 @@ import { ethers } from "ethers";
 import { Dialog, Transition } from "@headlessui/react";
 import Jazzicon from "react-jazzicon";
 import { Button, Card, CardBody, Input } from "@nextui-org/react";
-import { useNavigation } from "react-router-dom";
 
 type IWalletCtx = {
   walletProvider: ethers.BrowserProvider;
@@ -33,8 +32,6 @@ type IWalletCtx = {
 const WalletCtx = createContext<IWalletCtx>({} as IWalletCtx);
 
 export function Component() {
-  const navigation = useNavigation();
-  console.log(navigation);
   const [walletProvider, setWalletProvider] = useState<ethers.BrowserProvider>(
     {} as ethers.BrowserProvider
   );
