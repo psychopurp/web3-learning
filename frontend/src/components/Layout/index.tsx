@@ -100,7 +100,7 @@ function Layout() {
       </nav>
 
       <div className="flex-1 min-h-full max-h-full bg-gray-100 shadow-lg md:rounded-l-[4rem] overflow-auto">
-        <header className="flex justify-between items-center p-4 border-b bg-slate-50 md:rounded-tl-[4rem] sticky top-0">
+        <header className="flex justify-between items-center p-4 border-b bg-slate-50 md:rounded-tl-[4rem] sticky top-0 z-10">
           <div className="md:invisible">
             {menuVisible === true ? (
               <HiOutlineX
